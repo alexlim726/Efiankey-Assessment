@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POS System Discount Checker</title>
+<script>
+function checkDiscount(purchaseValue) {
+    if (purchaseValue > 499) {
+        document.getElementById("output").innerHTML = "Purchase Value is " + purchaseValue + ", discount is 10%";
+    } 
+    else if(purchaseValue > 299){
+        document.getElementById("output").innerHTML = "Purchase Value is " + purchaseValue + ", discount is 5%";
+    }
+    else {
+        document.getElementById("output").innerHTML = "Purchase Value is " + purchaseValue + ", there are no discount.";
+    }
+}
+</script>
+</head>
+<body>
+
+<h2>POS System Discount Checker</h2>
+
+<p>Enter your purchase value:</p>
+<input type="number" id="purchaseValue">
+
+<button onclick="checkDiscount(document.getElementById('purchaseValue').value)">Check Discount</button>
+
+<p id="output"></p>
+
+</body>
+</html>

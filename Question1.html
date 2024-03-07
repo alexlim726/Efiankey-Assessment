@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download Checker</title>
+<script>
+function checkDownload(memberType) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+               console.log(xhr.responseText);
+               alert(xhr.responseText);
+            } else {
+                alert('Request failed. Please try again later.');
+            }
+        }
+    };
+    xhr.open('GET', 'check_download.php?memberType=' + memberType, true);
+    xhr.send();
+}
+</script>
+</head>
+<body>
+
+<h2>Download Checker</h2>
+
+<button onclick="checkDownload('non-member')">Download as Non-Member</button>
+<button onclick="checkDownload('member')">Download as Member</button>
+<form method="post" action="check_download.php">
+    <input type="submit" name="reset">
+</form>
+
+</body>
+</html>

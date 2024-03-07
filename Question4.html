@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Distribution</title>
+</head>
+<body>
+    <script>
+        const itemTierRarity = [1, 2, 3, 4, 5];
+        const vipRank = ['v1', 'v2', 'v3', 'v4', 'v5'];
+
+        function rollItem(vipRank) {
+            if (vipRank === 'v1') {
+                return Math.random() < 0.5 ? 1 : 2;
+            } else if (vipRank === 'v2') {
+                const rand = Math.random();
+                if (rand < 0.33) return 1;
+                else if (rand < 0.67) return 2;
+                else return 3;
+            } else if (vipRank === 'v3') {
+                const rand = Math.random();
+                if (rand < 0.25) return 1;
+                else if (rand < 0.5) return 2;
+                else if (rand < 0.75) return 3;
+                else return 4;
+            } else {
+                return Math.floor(Math.random() * 5) + 1;
+            }
+        }
+
+        function itemDistribution() {
+            const results = {};
+            vipRank.forEach(rank => {
+                results[rank] = {};
+                itemTierRarity.forEach(tier => {
+                    results[rank][tier] = 0;
+                });
+            });
+
+            for (let i = 0; i < 100; i++) {
+                vipRank.forEach(rank => {
+                    const item = rollItem(rank);
+                    results[rank][item]++;
+                });
+            }
+
+            vipRank.forEach(rank => {
+                document.write(`<p>${rank} player:</p>`);
+                let totalItems = 0;
+                itemTierRarity.forEach(tier => {
+                    totalItems += results[rank][tier];
+                });
+                itemTierRarity.forEach(tier => {
+                    const count = results[rank][tier];
+                    document.write(`<p>Tier ${tier}: ${count} items (${(count / totalItems * 100).toFixed(2)}%)</p>`);
+                });
+                document.write('<br>');
+            });
+        }
+
+        itemDistribution();
+    </script>
+</body>
+</html>
