@@ -59,27 +59,6 @@ function checkDownload($memberType) {
                 }
             }
     }
-
-    // if (!isset($_SESSION['last_download_time'])) {
-    //     // Set the last download time if not set
-    //     $_SESSION['last_download_time'] = time();
-    // } else {
-    //     // Check if the user is trying to download again within 5 seconds
-        
-    //     $lastDownloadTime = $_SESSION['last_download_time'];
-    //     $timeDifference = $currentTime - $lastDownloadTime;
-        
-    //     if ($timeDifference < 5 && $memberType == 'non-member') {
-    //        return "Too many downloads\n". $clockFormat;
-    //     } 
-    //     elseif ($timeDifference < 5 && $memberType == 'member') {
-    //         return "Download started for member\n". $clockFormat;
-    //     }
-    //     else {
-    //         // Update the last download time
-    //         $_SESSION['last_download_time'] = $currentTime;
-    //     }
-    // }
     
     // Return appropriate response based on member type
     if ($memberType == 'member') {
