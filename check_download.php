@@ -63,9 +63,9 @@ function checkDownload($memberType) {
     // Return appropriate response based on member type
     if ($memberType == 'member') {
         
-        return "Download started for member\n".$clockFormat;
+        return "Member, Your download is starting...\n".$clockFormat;
     } else {
-       return "Download started for non-member\n".$clockFormat;
+       return "Non-member, Your download is starting...\n".$clockFormat;
     }
 }
 
